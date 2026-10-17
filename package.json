@@ -14,6 +14,12 @@
         "email": "me@ozankurt.com",
         "url": "https://ozankurt.com"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/OzanKurt/bonfire.git"
+    },
+    "homepage": "https://github.com/OzanKurt/bonfire#readme",
+    "bugs": "https://github.com/OzanKurt/bonfire/issues",
     "type": "module",
     "main": "dist/bonfire.cjs",
     "module": "dist/esm/bonfire.mjs",
