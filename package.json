@@ -1,6 +1,6 @@
 {
     "name": "@ozankurt/bonfire",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Dramatic full-screen notifications and dialogs inspired by Soulsborne games",
     "keywords": [
         "notifications",
