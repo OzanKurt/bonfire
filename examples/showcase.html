@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bonfire showcase</title>
+    <style>
+        /*
+         * A small browser game's expedition screen for the overlays to land on.
+         * Nothing here styles Bonfire; the page only reads ?scene.
+         */
+        :root {
+            color-scheme: dark;
+            --bg: #15130f;
+            --panel: #1f1c17;
+            --line: #36312a;
+            --text: #e8e0d0;
+            --muted: #9a907f;
+            --ember: #d9822b;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 50% 0%, #2a2219 0%, var(--bg) 60%);
+            color: var(--text);
+            font: 400 15px/1.5 Georgia, "Times New Roman", serif;
+        }
+
+        header { display: flex; justify-content: space-between; align-items: baseline; padding: 28px 40px 0; }
+        header h1 { margin: 0; font-size: 26px; font-weight: 400; letter-spacing: 0.04em; }
+        header span { color: var(--muted); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+        main { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; padding: 28px 40px; }
+        section { padding: 22px; background: var(--panel); border: 1px solid var(--line); }
+        h2 { margin: 0 0 14px; font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+
+        .quest { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--line); }
+        .quest:first-of-type { border-top: 0; }
+        .quest small { color: var(--muted); }
+
+        .stats { display: grid; grid-template-columns: 1fr auto; row-gap: 10px; }
+        .stats b { font-weight: 400; color: var(--ember); font-variant-numeric: tabular-nums; }
+
+        /* The online banner has no backdrop by design; give it open sky to sit in. */
+        body[data-scene="online"] main { margin-top: 300px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Ashen Road</h1>
+        <span>Expedition board</span>
+    </header>
+    <main>
+        <section>
+            <h2>Open quests</h2>
+            <div class="quest"><span>Light the watchtower beacon</span><small>Level 12</small></div>
+            <div class="quest"><span>Recover the ferryman's ledger</span><small>Level 14</small></div>
+            <div class="quest"><span>Clear the flooded crypt</span><small>Level 15</small></div>
+            <div class="quest"><span>Escort the cartographer</span><small>Level 17</small></div>
+            <div class="quest"><span>Slay the bell-tower warden</span><small>Level 20</small></div>
+        </section>
+        <section>
+            <h2>Party</h2>
+            <div class="stats">
+                <span>Health</span><b>412 / 560</b>
+                <span>Stamina</span><b>96 / 120</b>
+                <span>Embers carried</span><b>18,240</b>
+                <span>Deaths this run</span><b>7</b>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./showcase.js"></script>
+</body>
+</html>

@@ -2,6 +2,10 @@
 
 Dramatic full-screen notifications and dialogs inspired by Soulsborne games: death and victory banners, an "online" status banner, and keyboard-driven confirm and choice dialogs with a promise-based API. No dependencies, no framework required.
 
+![YOU DIED in glowing red serif capitals across a dark band over a game's expedition screen.](docs/images/death.png)
+
+Every image here is captured from `examples/showcase.html`; see [Development](#development).
+
 ## Installation
 
 ```bash
@@ -50,7 +54,13 @@ Full-screen message with a glow effect. Returns a cleanup function that dismisse
 
 Shortcuts for `notify` with the matching `type`. Same options and return value.
 
+| `success()` | `info()` |
+|---|---|
+| ![VICTORY ACHIEVED in glowing gold capitals across a dark band.](docs/images/victory.png) | ![BONFIRE LIT in silver capitals across a dark band.](docs/images/info.png) |
+
 ### `online(message, options)`
+
+![Summoned to another world in large gold letters with the subtitle Phantom of Ashen Road beneath, floating over the page.](docs/images/online.png)
 
 Elden Ring style status banner. Returns a cleanup function.
 
@@ -61,6 +71,8 @@ Elden Ring style status banner. Returns a cleanup function.
 | `onComplete` | `function` | `null` | Called once the banner has been removed |
 
 ### `confirm(message, options)`
+
+![A dark dialog asking Abandon the expedition? with the subtitle Unbanked embers are lost, and Yes above a selected No between gold arrows.](docs/images/confirm.png)
 
 Yes/No dialog. Resolves `true` or `false`. "No" is selected by default, and Escape resolves `false`.
 
@@ -79,6 +91,8 @@ if (await Bonfire.confirm('Delete this record?')) {
 ```
 
 ### `choice(message, options)`
+
+![A dark dialog asking Where do you travel? with Ember Watch, the selected Sunken Ferry between gold arrows, and Bell Tower.](docs/images/choice.png)
 
 Multiple choice dialog. Resolves with the chosen option's `value`, or `cancelValue` on Escape. Arrow keys move the selection; Enter or Space chooses.
 
@@ -119,10 +133,12 @@ All elements use `darksouls-*` class names (for example `.darksouls-message.deat
 ```bash
 npm install
 npm test
-npm run build
+npm run build        # dist/, which is committed; rebuild it before tagging a release
+npm run examples     # the showcase on http://localhost:5182/showcase.html
+npm run screenshots  # recapture docs/images/ from the showcase
 ```
 
-`dist/` is committed; rebuild it before tagging a release.
+The showcase takes `?scene=death|victory|info|online|confirm|choice`.
 
 ## License
 
