@@ -1,0 +1,48 @@
+{
+    "name": "@ozankurt/bonfire",
+    "version": "1.0.0",
+    "description": "Dramatic full-screen notifications and dialogs inspired by Soulsborne games",
+    "keywords": [
+        "notifications",
+        "dialog",
+        "confirm",
+        "ui"
+    ],
+    "license": "MIT",
+    "author": {
+        "name": "Ozan Kurt",
+        "email": "me@ozankurt.com",
+        "url": "https://ozankurt.com"
+    },
+    "type": "module",
+    "main": "dist/bonfire.cjs",
+    "module": "dist/esm/bonfire.mjs",
+    "unpkg": "dist/bonfire.min.js",
+    "jsdelivr": "dist/bonfire.min.js",
+    "exports": {
+        ".": {
+            "import": "./dist/esm/bonfire.mjs",
+            "require": "./dist/bonfire.cjs"
+        }
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "build": "node ./scripts/build.js",
+        "test": "vitest run",
+        "prepublishOnly": "npm test && npm run build"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "esbuild": "^0.28.2",
+        "happy-dom": "^21.0.3",
+        "vitest": "^5.0.5"
+    }
+}
