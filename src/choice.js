@@ -19,7 +19,7 @@ let choice = (message, options = {}) => {
 
     return new Promise((resolve) => {
         const config = {
-            options: options.options || [{ label: 'OK', value: true }],
+            options: options.options?.length ? options.options : [{ label: 'OK', value: true }],
             subtitle: options.subtitle || null,
             onSelect: options.onSelect || null,
             onCancel: options.onCancel || null,

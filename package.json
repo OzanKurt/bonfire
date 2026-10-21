@@ -23,17 +23,23 @@
     "type": "module",
     "main": "dist/bonfire.cjs",
     "module": "dist/esm/bonfire.mjs",
+    "types": "dist/bonfire.d.ts",
     "unpkg": "dist/bonfire.min.js",
     "jsdelivr": "dist/bonfire.min.js",
     "exports": {
         ".": {
+            "types": "./dist/bonfire.d.ts",
             "import": "./dist/esm/bonfire.mjs",
-            "require": "./dist/bonfire.cjs"
-        }
+            "require": "./dist/bonfire.cjs",
+            "default": "./dist/esm/bonfire.mjs"
+        },
+        "./dist/*": "./dist/*",
+        "./package.json": "./package.json"
     },
     "files": [
         "dist",
-        "src"
+        "src",
+        "CHANGELOG.md"
     ],
     "engines": {
         "node": ">=20"
@@ -41,9 +47,10 @@
     "scripts": {
         "build": "node ./scripts/build.js",
         "test": "vitest run",
-        "prepublishOnly": "npm test && npm run build",
+        "prepublishOnly": "npm test && npm run typecheck && npm run build",
         "examples": "vite --config vite.examples.config.js",
-        "screenshots": "node scripts/screenshots.js"
+        "screenshots": "node scripts/screenshots.js",
+        "typecheck": "tsc -p tsconfig.types.json"
     },
     "publishConfig": {
         "access": "public"
@@ -52,6 +59,7 @@
         "@playwright/test": "1.63.0",
         "esbuild": "^0.28.2",
         "happy-dom": "^21.0.3",
+        "typescript": "^5.9.3",
         "vite": "8.3.4",
         "vitest": "^5.0.5"
     }

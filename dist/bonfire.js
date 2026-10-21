@@ -355,11 +355,17 @@ var Bonfire = (() => {
     if (typeof document === "undefined" || document.getElementById("darksouls-styles")) {
       return;
     }
+    const { fontUrl } = getDefaults();
+    if (fontUrl && !document.getElementById("darksouls-font")) {
+      const link = document.createElement("link");
+      link.id = "darksouls-font";
+      link.rel = "stylesheet";
+      link.href = fontUrl;
+      document.head.appendChild(link);
+    }
     const styleElement = document.createElement("style");
     styleElement.id = "darksouls-styles";
-    const { fontUrl } = getDefaults();
-    styleElement.textContent = (fontUrl ? `@import url('${fontUrl}');
-` : "") + styles;
+    styleElement.textContent = styles;
     document.head.appendChild(styleElement);
   };
 
@@ -428,7 +434,7 @@ var Bonfire = (() => {
     injectStyles();
     return new Promise((resolve) => {
       const config = {
-        options: options.options || [{ label: "OK", value: true }],
+        options: options.options?.length ? options.options : [{ label: "OK", value: true }],
         subtitle: options.subtitle || null,
         onSelect: options.onSelect || null,
         onCancel: options.onCancel || null,

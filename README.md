@@ -98,7 +98,7 @@ Multiple choice dialog. Resolves with the chosen option's `value`, or `cancelVal
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `options` | `{ label, value }[]` | `[]` | The choices |
+| `options` | `{ label, value }[]` | one `OK` option (value `true`) | The choices; an empty list also gets the single `OK` option |
 | `subtitle` | `string` | `null` | Smaller line under the question |
 | `defaultIndex` | `number` | `0` | Initially selected option |
 | `cancelValue` | `any` | `null` | Resolved value when cancelled |
@@ -114,7 +114,7 @@ Bonfire.configure({
 });
 ```
 
-Call `configure()` before the first notification or dialog: the stylesheet, including the font import, is injected once on first use. An explicit `duration` passed to a call (including `0`) always wins over the configured default. Invalid values (a negative or non-numeric `duration`, an `undefined` option) are ignored and keep the current default.
+Call `configure()` before the first notification or dialog: the stylesheet and the font `<link>` are added once, on first use. An explicit `duration` passed to a call (including `0`) always wins over the configured default. Invalid values (a negative or non-numeric `duration`, an `undefined` option) are ignored and keep the current default.
 
 ### Self-hosting the font
 

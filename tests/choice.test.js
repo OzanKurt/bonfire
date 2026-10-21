@@ -69,3 +69,23 @@ describe('confirm and choice', () => {
         expect(onSelect).toHaveBeenCalledTimes(1);
     });
 });
+
+describe('choice with no options', () => {
+    beforeEach(() => {
+        resetDom();
+        vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+
+    it('falls back to a single OK option for an empty list', async () => {
+        const result = Bonfire.choice('Pick', { options: [] });
+
+        expect([...document.querySelectorAll('.darksouls-confirm-btn')].map((b) => b.textContent)).toEqual(['OK']);
+
+        press('Enter');
+        expect(await settle(result)).toBe(true);
+    });
+});

@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdirSync, statSync } from 'node:fs';
+import { copyFileSync, mkdirSync, statSync } from 'node:fs';
 
 mkdirSync('dist/esm', { recursive: true });
 
@@ -25,6 +25,7 @@ const outputs = [
 ];
 
 await Promise.all(outputs.map((options) => build(options)));
+copyFileSync('types/bonfire.d.ts', 'dist/bonfire.d.ts');
 
 for (const { outfile } of outputs) {
     console.log(`${outfile}  ${(statSync(outfile).size / 1024).toFixed(1)} KB`);

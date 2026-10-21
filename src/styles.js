@@ -323,11 +323,20 @@ let injectStyles = () => {
         return;
     }
 
+    // The font is a separate <link>: it does not block the stylesheet, and the
+    // URL is set as an attribute, so quotes or brackets in it cannot break CSS.
+    const { fontUrl } = getDefaults();
+    if (fontUrl && !document.getElementById('darksouls-font')) {
+        const link = document.createElement('link');
+        link.id = 'darksouls-font';
+        link.rel = 'stylesheet';
+        link.href = fontUrl;
+        document.head.appendChild(link);
+    }
+
     const styleElement = document.createElement('style');
     styleElement.id = 'darksouls-styles';
-    const { fontUrl } = getDefaults();
-    styleElement.textContent = (fontUrl ? `@import url('${fontUrl}');
-` : '') + styles;
+    styleElement.textContent = styles;
     document.head.appendChild(styleElement);
 };
 
